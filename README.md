@@ -1,7 +1,7 @@
-# Satellite altimetry unveils intensifying variations in global river water levels
+# Satellite altimetry reveals intensifying global river water level variability
 *****
 ## Introduction
-This repository contains all necessary code for producing datasets and reproducing results for the manuscript "Satellite altimetry reveals intensifying variations in global river water levels over recent years" (in review). If you want to replicate our results from start to finish, the whole process boils down to two key steps:
+This repository contains all necessary code for producing datasets and reproducing results for the manuscript "Satellite altimetry reveals intensifying global river water level variability" (in review). If you want to replicate our results from start to finish, the whole process boils down to two key steps:
 + ##### Step Ⅰ: Generate global virtual stations (VSs) and retrieve water levels from altimetry data.
 + ##### Step Ⅱ: Implement postprocessing on global river water levels, including fluctuations, change rates, extreme stage years, and seasonality.
 Step I is computationally intensive, and we strongly recommend using parallel computing. Even with 20 cores running simultaneously, it will take about two months to complete the calculations. We anticipate that most users/readers will be more interested in Step II, which can be easily carried out on personal computers. To make it more convenient to reproduce and visualize our results, we've provided the global river water level dataset that was generated after completing Step I. A detailed user guide explaining our dataset's attributes is available via [this link](https://doi.org/10.5281/zenodo.14671453). This documentation has been uploaded along with our dataset and the processed results obtained after Step II.
