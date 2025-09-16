@@ -1,7 +1,7 @@
-# Satellite altimetry reveals intensifying global river water level variability
+# Satellite altimetry unveils intensifying variations in global river water levels
 *****
 ## Introduction
-This repository contains all necessary code for producing datasets and reproducing results for the manuscript "Satellite altimetry reveals intensifying global river water level variability" (in review). If you want to replicate our results from start to finish, the whole process boils down to two key steps:
+This repository contains all necessary code for producing datasets and reproducing results for the manuscript "Satellite altimetry reveals intensifying variations in global river water levels over recent years" (in review). If you want to replicate our results from start to finish, the whole process boils down to two key steps:
 + ##### Step Ⅰ: Generate global virtual stations (VSs) and retrieve water levels from altimetry data.
 + ##### Step Ⅱ: Implement postprocessing on global river water levels, including fluctuations, change rates, extreme stage years, and seasonality.
 Step I is computationally intensive, and we strongly recommend using parallel computing. Even with 20 cores running simultaneously, it will take about two months to complete the calculations. We anticipate that most users/readers will be more interested in Step II, which can be easily carried out on personal computers. To make it more convenient to reproduce and visualize our results, we've provided the global river water level dataset that was generated after completing Step I. A detailed user guide explaining our dataset's attributes is available via [this link](https://doi.org/10.5281/zenodo.14671453). This documentation has been uploaded along with our dataset and the processed results obtained after Step II.
@@ -99,13 +99,21 @@ The input files are referenced by relative paths in the code. If any issues occu
 
 ***
 #### Dataset validation
-##### *Validate_with_insitu.ipynb*:
-+ Function: This code is used to validate our global river water level dataset against in-situ measurements in the United States.
+##### *Validate_with_insitu_H.ipynb*:
++ Function: This code is used to validate our global river water level dataset against in-situ stage measurements from USGS.
 + Input files: 
   (1) Processed global river water level dataset (JSON) in `Result datasets/Global water level datasets (processed)`, which is uploaded to [Zenodo](https://doi.org/10.5281/zenodo.14671453);
   (2) In-situ water levels (JSON) provided by [USGS](https://waterdata.usgs.gov/nwis/current/?type=dailystage&group_key=huc_cd&search_site_no_station_nm=06349700&site_no_name_select=siteno), stored at `Result datasets/Validation dataset/USGS_gauge_stage_update_to_20240901.json` (updated to 2024-9-1).
   (3) Table for matched VSs and gauging stations (excel file), stored at `./Dataset validation/Matching table.xlsx`.
 + Output files (uploaded to [Zenodo](https://doi.org/10.5281/zenodo.14671453)): River water level dataset with validation results (JSON), stored in `Result datasets/Validation dataset`. The description of its attributes can be found in Table 2 of [our technical documentation](https://doi.org/10.5281/zenodo.14671453).
+##### *Validate_with_insitu_Q.ipynb*:
++ Function: This code is used to validate our global river water level dataset against in-situ streamflow data and to assess the consistency between water level and discharge.
++ Input files: 
+  (1) Processed global river water level dataset (JSON) in `Result datasets/Global water level datasets (processed)`, which is uploaded to [Zenodo](https://doi.org/10.5281/zenodo.14671453);
+  (2) In-situ discharge records (JSON) provided by USGS and GRDC, stored at `Result datasets/Validation dataset/globe_gauge_discharge_data_8y.json`;
+  (3) Gauging station shapefiles in `./Dataset validation/discharge_gauge_shp.zip`;
+  (4) SWORD reach shapefiles.
++ Output files (uploaded to [Zenodo](https://doi.org/10.5281/zenodo.14671453)): VS infor paired with gauging stations (JSON), stored at `Result datasets/Validation dataset/Matched_gaugeQ_and_VS.json`.
 ##### *Dataset_Monte_experiment.ipynb*:
 + Function: This code is used to quantify VS-level and basin-level uncertainties in fluctuations and change rates through Monte Carlo simulations. The uncertainties are caused by altimetric errors, derived from in-situ validation.
 + Input files: 
